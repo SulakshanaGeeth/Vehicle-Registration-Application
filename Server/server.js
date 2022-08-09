@@ -1,11 +1,31 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+dotenv.config();
+
+const URL = process.env.MONGODB_URL;
+
+mongoose.connect(URL, {
+  //define connection
 });
 
-app.listen(port, () => {
-  console.log(`pp listening on port ${port}`);
+const connection = mongoose.connection; //assign database connection for a constant variable
+
+connection.once("open", () => {
+  //open connection for one time
+  console.log("MongoDB connection was successful"); //display message in console when the connection was successful
+});
+
+const app = express();
+
+//define a port for server
+const PORT = process.env.PORT || 8070;
+
+app.use(cors());
+app.use(express.json()); //parse various different custom JSON types as JSO
+
+app.listen(PORT, () => {
+  console.log(`Server is up and running on port number ${PORT}`);
 });
