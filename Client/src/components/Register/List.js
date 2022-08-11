@@ -9,7 +9,6 @@ function List() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  //   const [Id, setId] = useState([]);
 
   useEffect(() => {
     fetch(`${BACKEND_BASE_URL}/registration/getAll`)
@@ -40,6 +39,11 @@ function List() {
   return (
     <Fragment>
       <NavBar />
+      <h4
+        style={{ textAlign: "center", marginTop: "10px", marginBottom: "20px" }}
+      >
+        Registration List
+      </h4>
       <Table striped bordered hover>
         <thead>
           <tr>
