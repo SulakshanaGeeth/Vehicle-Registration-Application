@@ -1,24 +1,49 @@
-import React, { Fragment } from "react";
+import React, { useState, Fragment } from "react";
+import { Button, Form } from "react-bootstrap";
+import { BACKEND_BASE_URL } from "../constant/index";
+import Axios from "axios";
+import NavBar from "./NavBar";
 
-function Register() {
+const List = (props) => {
+  const [plateNumber, setplateNumber] = useState();
+
+  const UpdateData = (e) => {
+    e.preventDefault();
+
+    Axios.post(`${BACKEND_BASE_URL}/registration/create`, {
+      plateNumber,
+    })
+      .then(() => {
+        alert("registration added");
+        window.location.replace("/list");
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+
   return (
     <Fragment>
-      <form>
-        <div class="form-group">
-          <label for="InputPlateNo"></label>
-          <input
+      <NavBar />
+      <h4>Vehicle Registration</h4>
+      <Form>
+        <Form.Group className="mb-3" controlId="registration">
+          <Form.Label>Registration No.</Form.Label>
+          <Form.Control
             type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            placeholder="Enter Registration Number"
+            placeholder="Enter registration no"
+            onChange={(e) => {
+              setplateNumber(e.target.value);
+            }}
           />
-        </div>
-        <button type="submit" class="btn btn-primary">
+        </Form.Group>
+
+        <Button onClick={UpdateData} variant="primary" type="submit">
           Submit
-        </button>
-      </form>
+        </Button>
+      </Form>
     </Fragment>
   );
-}
+};
 
-export default Register;
+export default List;
