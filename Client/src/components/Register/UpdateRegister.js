@@ -44,23 +44,35 @@ const UpdateRegistration = (props) => {
   return (
     <Fragment>
       <NavBar />
-      <h4>Update Registration</h4>
-      <Form>
-        <Form.Group className="mb-3" controlId="Registration">
-          <Form.Label>Registration</Form.Label>
-          <Form.Control
-            type="text"
-            value={plateNumber}
-            onChange={(e) => {
-              setplateNumber(e.target.value);
-            }}
-          />
-        </Form.Group>
-
-        <Button onClick={UpdateData} variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+      <div style={{ textAlign: "center" }}>
+        <h4
+          style={{
+            textAlign: "center",
+            marginTop: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          Update Registration
+        </h4>
+        <Form>
+          <Form.Group className="mb-3" controlId="Registration">
+            <Form.Label style={{ marginRight: "10%" }}>
+              Registration Number
+            </Form.Label>
+            <Form.Control
+              type="text"
+              value={plateNumber}
+              onChange={(e) => {
+                setplateNumber(e.target.value);
+              }}
+              style={{ width: "20%", marginLeft: "40%" }}
+            />
+          </Form.Group>
+          <Button onClick={UpdateData} variant="primary" type="submit">
+            Submit
+          </Button>
+        </Form>
+      </div>
     </Fragment>
   );
 };
