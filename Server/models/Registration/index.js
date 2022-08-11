@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const RegistrationScheme = new Schema({
+const Registration = new Schema({
   plateNumber: String,
   type: String,
 });
 
-const newRegistrationScheme = mongoose.model(
-  "register-scheme",
-  RegistrationScheme
-);
-module.exports = newRegistrationScheme;
+const newRegistration = mongoose.model("register", Registration);
+module.exports = newRegistration;
