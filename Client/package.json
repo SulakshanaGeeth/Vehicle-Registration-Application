@@ -1,12 +1,13 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "webpack.config.js",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "webpack serve --config webpack.config.js",
+    "build": "babel src -d lib",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "author": "Geeth",
   "license": "ISC",
@@ -16,11 +17,30 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "webpack-cli": "^4.10.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.18.10",
     "buffer": "^6.0.3",
+    "html-webpack-plugin": "^5.5.0",
     "parcel": "^2.7.0",
-    "process": "^0.11.10"
-  }
+    "process": "^0.11.10",
+    "webpack-dev-server": "^4.10.0",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/preset-react": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "css-loader": "^6.7.1",
+    "jest-dom": "^4.0.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "description": ""
 }
