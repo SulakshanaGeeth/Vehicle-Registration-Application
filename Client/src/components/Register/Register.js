@@ -7,18 +7,19 @@ import NavBar from "./NavBar";
 const List = (props) => {
   const [plateNumber, setplateNumber] = useState();
 
-  const UpdateData = (e) => {
+  const AddRegistration = (e) => {
     e.preventDefault();
 
     Axios.post(`${BACKEND_BASE_URL}/registration/create`, {
       plateNumber,
     })
       .then(() => {
-        alert("registration added");
+        alert("Registration added");
         window.location.replace("/list");
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.error);
+        window.location.replace("/");
       });
   };
 
@@ -49,7 +50,7 @@ const List = (props) => {
               style={{ width: "20%", marginLeft: "40%" }}
             />
           </Form.Group>
-          <Button onClick={UpdateData} variant="primary" type="submit">
+          <Button onClick={AddRegistration} variant="primary" type="submit">
             Submit
           </Button>
         </Form>

@@ -63,7 +63,7 @@ function List() {
               <td>
                 <Button
                   onClick={() => window.location.replace("/update/" + item._id)}
-                  variant="primary"
+                  variant="warning"
                   type="submit"
                 >
                   Update

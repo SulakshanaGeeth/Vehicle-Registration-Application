@@ -1,9 +1,15 @@
 const Register = require("../../models/Registration");
+const checkValidate = require("./../../utils/checkValidate");
 const checkType = require("../../utils/checkType");
 
 exports.createRegistration = async (req, res) => {
   const { plateNumber } = req.body;
 
+  const value = checkValidate(plateNumber);
+  console.log(value);
+  if (value == "False") {
+    return res.status(401).json({ error: "Registration Number is Invalid" });
+  }
   const type = checkType(plateNumber);
 
   const newRegisterScheme = new Register({ plateNumber, type });
